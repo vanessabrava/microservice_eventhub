@@ -1,9 +1,10 @@
-﻿using iBeach.Framework.Common.Constants;
-using iBeach.Framework.EventHub.Services.Producer;
-using iBeach.Framework.Services;
-using NerdAllDebug.Sample.App.Mappers;
+﻿using NerdAllDebug.Sample.App.Mappers;
 using NerdAllDebug.Sample.App.Messages;
 using NerdAllDebug.Sample.Services;
+using iBeach.Framework.Common.Constants;
+using iBeach.Framework.EventHub.Messages;
+using iBeach.Framework.EventHub.Services.Producer;
+using iBeach.Framework.Services;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

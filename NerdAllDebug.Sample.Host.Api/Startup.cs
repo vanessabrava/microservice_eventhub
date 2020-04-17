@@ -31,7 +31,7 @@ namespace NerdAllDebug.Sample.Host.Api
         /// <summary>
         /// The swagger title.
         /// </summary>
-        public static string SwaggerDocTitle => "Radix - Microservice Sample";
+        public static string SwaggerDocTitle => "Nerd All Debug - Microservice Sample";
 
         /// <summary>
         /// the swagger version.

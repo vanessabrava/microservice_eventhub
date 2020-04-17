@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="iBeach.Framework.Application.Extension" Version="3.0.0" />
     <PackageReference Include="iBeach.Framework.EventHub" Version="3.0.0" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using NerdAllDebug.Sample.Host.Client.Options;
-using iBeach.Framework.Services.Client;
+using SotreqLink.Framework.Services.Client;
 using System;
 
 namespace NerdAllDebug.Sample.Host.Client.Base

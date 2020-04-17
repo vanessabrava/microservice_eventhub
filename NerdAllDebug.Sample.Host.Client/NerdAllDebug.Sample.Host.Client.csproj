@@ -4,13 +4,13 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Nerd All Debug</Authors>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <Description>Methods that implement the calls HTTP REST for Sample Microservice.
 This package is a client of microservice that using API design pattern.
 
 Compiled in .NET Standard 2.1</Description>
     <RepositoryUrl>https://dev.azure.com/radixeng/SOT-ImpNovaArqSotreqLink/_git/IntegrationServiceSample</RepositoryUrl>
-    <PackageTags>client sample nerdalldebug</PackageTags>
+    <PackageTags>client sample radix</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,7 +22,8 @@ Compiled in .NET Standard 2.1</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="iBeach.Framework.Services.Client" Version="3.0.2" />
+    <PackageReference Include="NerdAllDebug.Sample.App.Messages" Version="3.0.0" />
+    <PackageReference Include="SotreqLink.Framework.Services.Client" Version="3.0.3" />
   </ItemGroup>
 
 </Project>

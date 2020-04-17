@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NerdAllDebug.Sample.Host.Client.Options;
-using iBeach.Framework.Services.Client;
-using iBeach.Framework.Services.Client.Extension;
+using SotreqLink.Framework.Services.Client;
+using SotreqLink.Framework.Services.Client.Extension;
 using System;
 using System.Net;
 using System.Net.Http;

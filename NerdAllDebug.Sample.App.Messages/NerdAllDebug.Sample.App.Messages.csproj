@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Authors>Radix</Authors>
+    <Authors>Nerd All Debug</Authors>
     <Version>3.0.0</Version>
     <Description>Sample message to use on client or EventHub.
 
 Compiled in .NET Standard 2.1</Description>
-    <RepositoryUrl>https://dev.azure.com/radixeng/SOT-ImpNovaArqSotreqLink/_git/IntegrationServiceSample</RepositoryUrl>
+    <RepositoryUrl></RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageTags>message sample radix</PackageTags>
+    <PackageTags>message sample nerd all debug</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

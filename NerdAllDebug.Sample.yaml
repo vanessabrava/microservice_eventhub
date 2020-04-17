@@ -7,8 +7,8 @@
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-    packageMessageRadixSample: 'NerdAllDebug.Sample.App.Messages'
-    packageClientRadixSample: 'NerdAllDebug.Sample.Host.Client'
+    packageMessageNerdAllDebug: 'NerdAllDebug.Sample.App.Messages'
+    packageClientNerdAllDebug: 'NerdAllDebug.Sample.Host.Client'
   workspace:
     clean: resources
   steps:
@@ -28,66 +28,66 @@
       testResultsFiles: '**/*.trx'
     displayName: 'Publish Test Results'
   - task: CopyFiles@2
-    displayName: 'Copy package $(packageMessageRadixSample)'
+    displayName: 'Copy package $(packageMessageNerdAllDebug)'
     inputs:
-      SourceFolder: '$(Build.SourcesDirectory)/$(packageMessageRadixSample)/bin/$(buildConfiguration)/'
+      SourceFolder: '$(Build.SourcesDirectory)/$(packageMessageNerdAllDebug)/bin/$(buildConfiguration)/'
       Contents: '*.nupkg'
-      TargetFolder: '$(build.artifactstagingdirectory)/$(packageMessageRadixSample)/bin/$(buildConfiguration)'
+      TargetFolder: '$(build.artifactstagingdirectory)/$(packageMessageNerdAllDebug)/bin/$(buildConfiguration)'
       CleanTargetFolder: true
       OverWrite: true
     timeoutInMinutes: 60
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)/$(packageMessageRadixSample)/bin/$(buildConfiguration)'
-      ArtifactName: '$(packageMessageRadixSample)-package'      
-    displayName: 'Publishing package $(packageMessageRadixSample)'
+      PathtoPublish: '$(build.artifactstagingdirectory)/$(packageMessageNerdAllDebug)/bin/$(buildConfiguration)'
+      ArtifactName: '$(packageMessageNerdAllDebug)-package'      
+    displayName: 'Publishing package $(packageMessageNerdAllDebug)'
     timeoutInMinutes: 60
   - task: CopyFiles@2
-    displayName: 'Copy package $(packageClientRadixSample)'
+    displayName: 'Copy package $(packageClientNerdAllDebug)'
     inputs:
-      SourceFolder: '$(Build.SourcesDirectory)/$(packageClientRadixSample)/bin/$(buildConfiguration)/'
+      SourceFolder: '$(Build.SourcesDirectory)/$(packageClientNerdAllDebug)/bin/$(buildConfiguration)/'
       Contents: '*.nupkg'
-      TargetFolder: '$(build.artifactstagingdirectory)/$(packageClientRadixSample)/bin/$(buildConfiguration)'
+      TargetFolder: '$(build.artifactstagingdirectory)/$(packageClientNerdAllDebug)/bin/$(buildConfiguration)'
       CleanTargetFolder: true
       OverWrite: true
     timeoutInMinutes: 60
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)/$(packageClientRadixSample)/bin/$(buildConfiguration)'
-      ArtifactName: '$(packageClientRadixSample)-package'      
-    displayName: 'Publishing package $(packageClientRadixSample)'
+      PathtoPublish: '$(build.artifactstagingdirectory)/$(packageClientNerdAllDebug)/bin/$(buildConfiguration)'
+      ArtifactName: '$(packageClientNerdAllDebug)-package'      
+    displayName: 'Publishing package $(packageClientNerdAllDebug)'
     timeoutInMinutes: 60
 - job: DocFX
   pool:
     vmImage: 'ubuntu-16.04'
   container: diogenesalves/docfx-run:latest
   variables:
-    docFXFolderMessageRadixSample: 'NerdAllDebug.Sample.App.Messages'
-    docFXFolderClientRadixSample: 'NerdAllDebug.Sample.Host.Client'
+    docFXFolderMessageNerdAllDebug: 'NerdAllDebug.Sample.App.Messages'
+    docFXFolderClientNerdAllDebug: 'NerdAllDebug.Sample.Host.Client'
   steps:
   - script: |
-      \cp /docfx/docfx.json $(Build.SourcesDirectory)/$(docFXFolderMessageRadixSample)/
-      mono /docfx/docfx.exe $(Build.SourcesDirectory)/$(docFXFolderMessageRadixSample)/docfx.json
-    displayName: 'Executing DocFX $(docFXFolderMessageRadixSample)'
+      \cp /docfx/docfx.json $(Build.SourcesDirectory)/$(docFXFolderMessageNerdAllDebug)/
+      mono /docfx/docfx.exe $(Build.SourcesDirectory)/$(docFXFolderMessageNerdAllDebug)/docfx.json
+    displayName: 'Executing DocFX $(docFXFolderMessageNerdAllDebug)'
     timeoutInMinutes: 60
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.SourcesDirectory)/$(docFXFolderMessageRadixSample)/_site/api'
-      ArtifactName: '$(docFXFolderMessageRadixSample)'
+      PathtoPublish: '$(Build.SourcesDirectory)/$(docFXFolderMessageNerdAllDebug)/_site/api'
+      ArtifactName: '$(docFXFolderMessageNerdAllDebug)'
       ArtifactType: container
       TargetPath: ''
-    displayName: 'Publishing DocFX $(docFXFolderMessageRadixSample)'
+    displayName: 'Publishing DocFX $(docFXFolderMessageNerdAllDebug)'
     timeoutInMinutes: 60
   - script: |
-      \cp /docfx/docfx.json $(Build.SourcesDirectory)/$(docFXFolderClientRadixSample)/
-      mono /docfx/docfx.exe $(Build.SourcesDirectory)/$(docFXFolderClientRadixSample)/docfx.json
-    displayName: 'Executing DocFX $(docFXFolderClientRadixSample)'
+      \cp /docfx/docfx.json $(Build.SourcesDirectory)/$(docFXFolderClientNerdAllDebug)/
+      mono /docfx/docfx.exe $(Build.SourcesDirectory)/$(docFXFolderClientNerdAllDebug)/docfx.json
+    displayName: 'Executing DocFX $(docFXFolderClientNerdAllDebug)'
     timeoutInMinutes: 60
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.SourcesDirectory)/$(docFXFolderClientRadixSample)/_site/api'
-      ArtifactName: '$(docFXFolderClientRadixSample)'
+      PathtoPublish: '$(Build.SourcesDirectory)/$(docFXFolderClientNerdAllDebug)/_site/api'
+      ArtifactName: '$(docFXFolderClientNerdAllDebug)'
       ArtifactType: container
       TargetPath: ''
-    displayName: 'Publishing DocFX $(docFXFolderClientRadixSample)'
+    displayName: 'Publishing DocFX $(docFXFolderClientNerdAllDebug)'
     timeoutInMinutes: 60

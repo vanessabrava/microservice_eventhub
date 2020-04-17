@@ -52,9 +52,6 @@ namespace NerdAllDebug.Sample.App.Services.Imp
 
             var result = modelResult.ToResultResponseMessage(request);
 
-            if (!result.IsHttpStatusCodeError())
-                result.CreateResponseNotContent();
-
             return result;
         }
 
@@ -66,9 +63,7 @@ namespace NerdAllDebug.Sample.App.Services.Imp
 
             var response = SampleMessageMapper.ToResponse(fooSampleResult.Model);
 
-            if (response == null)
-                result.CreateResponseNotContent();
-            else
+            if (response != null)
                 result.SetReturn(response);
 
             return result;
@@ -82,9 +77,7 @@ namespace NerdAllDebug.Sample.App.Services.Imp
 
             var response = SampleMessageMapper.ToResponse(fooSampleResult.Models);
 
-            if (response == null)
-                result.CreateResponseNotContent();
-            else
+            if (response != null)
                 result.SetReturn(response);
 
             return result;
