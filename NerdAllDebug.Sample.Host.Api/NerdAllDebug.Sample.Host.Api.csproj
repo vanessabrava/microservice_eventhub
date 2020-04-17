@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp3.1\NerdAllDebug.Sample.Host.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp3.1\NerdAllDebug.Sample.Host.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iBeach.Framework.Host.Api" Version="3.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Messages\NerdAllDebug.Sample.App.Messages.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Services\NerdAllDebug.Sample.App.Services.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Infra.CrossCutting.DI\NerdAllDebug.Sample.Infra.CrossCutting.DI.csproj" />
+  </ItemGroup>
+
+</Project>

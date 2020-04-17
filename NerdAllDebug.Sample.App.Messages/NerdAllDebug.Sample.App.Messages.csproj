@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Radix</Authors>
+    <Version>3.0.0</Version>
+    <Description>Sample message to use on client or EventHub.
+
+Compiled in .NET Standard 2.1</Description>
+    <RepositoryUrl>https://dev.azure.com/radixeng/SOT-ImpNovaArqSotreqLink/_git/IntegrationServiceSample</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>message sample radix</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.1\NerdAllDebug.Sample.App.Messages.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.1\NerdAllDebug.Sample.App.Messages.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iBeach.Framework.Services" Version="3.0.1" />
+  </ItemGroup>
+
+</Project>

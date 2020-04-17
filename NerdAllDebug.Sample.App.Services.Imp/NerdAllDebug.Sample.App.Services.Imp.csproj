@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iBeach.Framework.EventHub" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Mappers\NerdAllDebug.Sample.App.Mappers.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Messages\NerdAllDebug.Sample.App.Messages.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Services\NerdAllDebug.Sample.App.Services.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Services.Model\NerdAllDebug.Sample.Services.Model.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Services\NerdAllDebug.Sample.Services.csproj" />
+  </ItemGroup>
+
+</Project>

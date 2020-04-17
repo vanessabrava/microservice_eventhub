@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Services.Imp\NerdAllDebug.Sample.App.Services.Imp.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Services\NerdAllDebug.Sample.App.Services.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Infra.DataAccess.Oracle\NerdAllDebug.Sample.Infra.DataAccess.Oracle.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Infra.DataAccess\NerdAllDebug.Sample.Infra.DataAccess.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Infra.ServiceProvider.Xml\NerdAllDebug.Sample.Infra.ServiceProvider.Xml.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Infra.ServiceProvider\NerdAllDebug.Sample.Infra.ServiceProvider.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Services.Imp\NerdAllDebug.Sample.Services.Imp.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Services.Model\NerdAllDebug.Sample.Services.Model.csproj" />
+    <ProjectReference Include="..\NerdAllDebug.Sample.Services\NerdAllDebug.Sample.Services.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,93 @@
+﻿jobs:
+- job: Build
+  pool:
+    name: Hosted Ubuntu 1604   
+  variables:
+    solution: 'NerdAllDebug.Sample.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+    packageMessageRadixSample: 'NerdAllDebug.Sample.App.Messages'
+    packageClientRadixSample: 'NerdAllDebug.Sample.Host.Client'
+  workspace:
+    clean: resources
+  steps:
+  - task: NuGetCommand@2
+    displayName: 'Authenticate with Azure DevOps NuGet SotreqLink Packages'
+    inputs:
+      command: custom
+      arguments: sources update -Name "SotreqLink-Packages" -Username "vsts" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile ./NuGet.config
+    timeoutInMinutes: 60
+  - script: | 
+      dotnet build $(System.DefaultWorkingDirectory)/$(solution) --configuration $(buildConfiguration) 
+      dotnet test $(System.DefaultWorkingDirectory)/$(solution) --configuration $(buildConfiguration) --logger trx --collect:"Code Coverage" --no-build
+    displayName: 'Build dotnet $(buildConfiguration)'
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
+    displayName: 'Publish Test Results'
+  - task: CopyFiles@2
+    displayName: 'Copy package $(packageMessageRadixSample)'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)/$(packageMessageRadixSample)/bin/$(buildConfiguration)/'
+      Contents: '*.nupkg'
+      TargetFolder: '$(build.artifactstagingdirectory)/$(packageMessageRadixSample)/bin/$(buildConfiguration)'
+      CleanTargetFolder: true
+      OverWrite: true
+    timeoutInMinutes: 60
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)/$(packageMessageRadixSample)/bin/$(buildConfiguration)'
+      ArtifactName: '$(packageMessageRadixSample)-package'      
+    displayName: 'Publishing package $(packageMessageRadixSample)'
+    timeoutInMinutes: 60
+  - task: CopyFiles@2
+    displayName: 'Copy package $(packageClientRadixSample)'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)/$(packageClientRadixSample)/bin/$(buildConfiguration)/'
+      Contents: '*.nupkg'
+      TargetFolder: '$(build.artifactstagingdirectory)/$(packageClientRadixSample)/bin/$(buildConfiguration)'
+      CleanTargetFolder: true
+      OverWrite: true
+    timeoutInMinutes: 60
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)/$(packageClientRadixSample)/bin/$(buildConfiguration)'
+      ArtifactName: '$(packageClientRadixSample)-package'      
+    displayName: 'Publishing package $(packageClientRadixSample)'
+    timeoutInMinutes: 60
+- job: DocFX
+  pool:
+    vmImage: 'ubuntu-16.04'
+  container: diogenesalves/docfx-run:latest
+  variables:
+    docFXFolderMessageRadixSample: 'NerdAllDebug.Sample.App.Messages'
+    docFXFolderClientRadixSample: 'NerdAllDebug.Sample.Host.Client'
+  steps:
+  - script: |
+      \cp /docfx/docfx.json $(Build.SourcesDirectory)/$(docFXFolderMessageRadixSample)/
+      mono /docfx/docfx.exe $(Build.SourcesDirectory)/$(docFXFolderMessageRadixSample)/docfx.json
+    displayName: 'Executing DocFX $(docFXFolderMessageRadixSample)'
+    timeoutInMinutes: 60
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.SourcesDirectory)/$(docFXFolderMessageRadixSample)/_site/api'
+      ArtifactName: '$(docFXFolderMessageRadixSample)'
+      ArtifactType: container
+      TargetPath: ''
+    displayName: 'Publishing DocFX $(docFXFolderMessageRadixSample)'
+    timeoutInMinutes: 60
+  - script: |
+      \cp /docfx/docfx.json $(Build.SourcesDirectory)/$(docFXFolderClientRadixSample)/
+      mono /docfx/docfx.exe $(Build.SourcesDirectory)/$(docFXFolderClientRadixSample)/docfx.json
+    displayName: 'Executing DocFX $(docFXFolderClientRadixSample)'
+    timeoutInMinutes: 60
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.SourcesDirectory)/$(docFXFolderClientRadixSample)/_site/api'
+      ArtifactName: '$(docFXFolderClientRadixSample)'
+      ArtifactType: container
+      TargetPath: ''
+    displayName: 'Publishing DocFX $(docFXFolderClientRadixSample)'
+    timeoutInMinutes: 60
