@@ -3,9 +3,9 @@ using Microsoft.Extensions.Options;
 using NerdAllDebug.Sample.App.Messages;
 using NerdAllDebug.Sample.Host.Client.Base;
 using NerdAllDebug.Sample.Host.Client.Options;
-using SotreqLink.Framework.Common.Constants;
-using SotreqLink.Framework.Services;
-using SotreqLink.Framework.Services.Client;
+using iBeach.Framework.Common.Constants;
+using iBeach.Framework.Services;
+using iBeach.Framework.Services.Client;
 using System.Threading.Tasks;
 
 namespace NerdAllDebug.Sample.Host.Client

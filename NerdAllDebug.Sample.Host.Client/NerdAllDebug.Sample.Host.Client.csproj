@@ -9,8 +9,8 @@
 This package is a client of microservice that using API design pattern.
 
 Compiled in .NET Standard 2.1</Description>
-    <RepositoryUrl>https://dev.azure.com/radixeng/SOT-ImpNovaArqSotreqLink/_git/IntegrationServiceSample</RepositoryUrl>
-    <PackageTags>client sample radix</PackageTags>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageTags>client sample nerd all debug</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,8 +22,11 @@ Compiled in .NET Standard 2.1</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NerdAllDebug.Sample.App.Messages" Version="3.0.0" />
-    <PackageReference Include="SotreqLink.Framework.Services.Client" Version="3.0.3" />
+    <PackageReference Include="iBeach.Framework.Services.Client" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NerdAllDebug.Sample.App.Messages\NerdAllDebug.Sample.App.Messages.csproj" />
   </ItemGroup>
 
 </Project>

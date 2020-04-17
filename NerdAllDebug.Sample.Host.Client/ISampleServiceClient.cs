@@ -1,5 +1,5 @@
 ﻿using NerdAllDebug.Sample.App.Messages;
-using SotreqLink.Framework.Services;
+using iBeach.Framework.Services;
 using System.Threading.Tasks;
 
 namespace NerdAllDebug.Sample.Host.Client

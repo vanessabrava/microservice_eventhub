@@ -60,3 +60,5 @@
 /NerdAllDebug.Sample.Infra.CrossCutting.Options/obj
 /NerdAllDebug.Sample.Infra.ServiceProvider/obj
 /NerdAllDebug.Sample.Infra.ServiceProvider.Xml/obj
+/NerdAllDebug.Sample.Infra.ServiceProvider/bin/Debug/netstandard2.1
+/NerdAllDebug.Sample.Infra.ServiceProvider.Xml/bin/Debug/netstandard2.1
